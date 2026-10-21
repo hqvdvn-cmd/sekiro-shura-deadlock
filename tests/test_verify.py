@@ -43,4 +43,24 @@ class VerificationTests(unittest.TestCase):
         self.manifest['native_localization_checks']['../other.txt']='0'*64
         with self.assertRaisesRegex(RuntimeError,'four selection'):verify.check_selection_base(self.game,self.manifest)
 
+    def v1_fixture(self):
+        self.manifest['version']='v1.0'
+        self.data.update({path:('native-'+path).encode() for path in verify.RELOAD_RESOURCES})
+        self.manifest['compatibility_checks']={n:{'sha256':hashlib.sha256(b).hexdigest()} for n,b in self.data.items()}
+        fixture(self.game,self.data)
+
+    def test_v1_checks_sixteen_native_resources(self):
+        self.v1_fixture()
+        self.assertEqual(len(verify.check_selection_base(self.game,self.manifest)),16)
+
+    def test_v1_changed_reload_rejected(self):
+        self.v1_fixture()
+        fixture(self.game,{**self.data,verify.RELOAD_RESOURCES[0]:b'updated-reload'})
+        with self.assertRaisesRegex(RuntimeError,'reload_idle.*changed'):verify.check_selection_base(self.game,self.manifest)
+
+    def test_v1_missing_reload_reference_rejected(self):
+        self.v1_fixture()
+        self.manifest['compatibility_checks'].pop(verify.RELOAD_RESOURCES[0])
+        with self.assertRaisesRegex(RuntimeError,'all twelve'):verify.check_selection_base(self.game,self.manifest)
+
 if __name__=='__main__':unittest.main()

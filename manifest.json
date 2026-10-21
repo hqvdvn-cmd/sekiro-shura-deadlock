@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "version": "v29-beta",
+  "version": "v1.0",
   "variant": "standalone",
   "platform": "Windows",
   "packages": [
     {
       "file": "pak13_dir.vpk",
       "component": "Wolf model, animations, selection UI, HUD and prototype voices",
-      "bytes": 336355736,
-      "sha256": "4635677432bfea9f9e4fa4795d6dd7a9eec7630ade57cbd4b97a898a490bce9e"
+      "bytes": 336072599,
+      "sha256": "3491657c075eb84850d60000adac2b66ca596195669b07b279314e41769cb03b"
     },
     {
       "file": "pak14_dir.vpk",
@@ -34,20 +34,51 @@
     },
     "models/heroes_wip/yamato/clips/ui_hero_select.vnmclip_c": {
       "sha256": "3fd4163ddd3d7211d740387bcc9a80bb60dea5025e9dae2e871aac1bd1788bbb"
+    },
+    "models/heroes_wip/yamato/clips/reload_idle.vnmclip_c": {
+      "sha256": "370d101269708f440f1982c8d3551e96e21259f3636aaf5fb4b960741768137d"
+    },
+    "models/heroes_wip/yamato/clips/reload_idle_quick.vnmclip_c": {
+      "sha256": "ad4a2125c494b046d03cebe750beee586ede72a2a4eb80f254ccec5fea06cf84"
+    },
+    "models/heroes_wip/yamato/clips/reload_run_quick.vnmclip_c": {
+      "sha256": "7f42dc8706e9c32878308d81340bc9cdc72236b45df576f2dee11bccf14fc288"
+    },
+    "models/heroes_wip/yamato/clips/reload_in_air_quick.vnmclip_c": {
+      "sha256": "32322967933463c256a33579eb789359aadc298cd4c93f17db68d18c3f8ce62d"
+    },
+    "models/heroes_wip/yamato/clips/reload_slide_quick.vnmclip_c": {
+      "sha256": "469b546300cd4ce6b1b86b6cf2fe552ed2d92faaa548268786278664e077e487"
+    },
+    "models/heroes_wip/yamato/clips/reload_crouch_idle_quick.vnmclip_c": {
+      "sha256": "eee07d9436e843777ae70653f33b2ae3204282ceca17aa49d246725f149acd4f"
+    },
+    "models/heroes_wip/yamato/clips/reload_crouch_run_quick.vnmclip_c": {
+      "sha256": "86304e4491442f345fa11af5563931cb28b6900c0c9ec8a365faf720ca53e81c"
+    },
+    "models/heroes_wip/yamato/yamato.vnmskel_c": {
+      "sha256": "481a3c09a193f14b57f59e24f3931fa36979f24009965a54ecf743bd26f0b7d1"
+    },
+    "animgraphs/animgraph2/hero/yamato/yamato_sword_bodygroup.vnmgraph_c": {
+      "sha256": "ce41472edc1cc261eb37674c45ba2fc0f03bd9cff6e2ef664d3fa4a3e28a9c7c"
+    },
+    "models/heroes_staging/yamato_v2/yamato.vmdl_c": {
+      "sha256": "10bb9a3789b804aa86f05dd54a9ff271b7446870c1f0853411c817dedd9c04c5"
     }
   },
-  "runtime": "Work in progress, published at owner request. V27 combat/reload/ultimate previously checked by owner; V29 hand/back-sword changes have compiled checks and are installed, new in-game acceptance remains pending.",
+  "runtime": "Owner approved v1 after selecting reload A in game. Model, reload and ultimate were checked in the combined local setup. New low-health/killstreak portrait textures have package/pixel checks; separate clean standalone match acceptance is not recorded.",
   "known_limitations": [
-    "Work in progress. Sword grip, selection pose and sheathing may still need adjustment.",
-    "A brief native blue parry startup flash may remain. Shared parry and movement colors are unchanged.",
-    "Japanese synthetic prototype voices can sound choppy; voice-quality replacement is deferred.",
+    "Japanese synthetic prototype voices can sound choppy. Voice replacement is the next planned update.",
+    "A brief native blue parry startup flash may remain; shared parry and movement colors are unchanged.",
     "English/Russian names and tags replace localization files and can conflict with other renaming mods.",
-    "Other Yamato replacements and ability binding packages can conflict; standalone has no separate clean-game match acceptance."
+    "Use only one ultimate binding variant. Other Yamato replacements and ability packages can conflict.",
+    "Low-health and killstreak portraits were verified from packed textures; separate in-game confirmation is pending."
   ],
   "native_localization_checks": {
     "resource/localization/citadel_gc_hero_names/citadel_gc_hero_names_english.txt": "daa5aa4808bf2ecbc299b4f1e6b459fc6d1ee6d47886bad8054812388f0fcf5c",
     "resource/localization/citadel_heroes/citadel_heroes_english.txt": "d75e9cb0cb3c9761acc22da03615ddd272177107ef4c3bc9e05de2bb63da921b",
     "resource/localization/citadel_gc_hero_names/citadel_gc_hero_names_russian.txt": "d53200a3c4a140f88f15680acba265890662777f626c8a6ebb7da1e2cc7a160f",
     "resource/localization/citadel_heroes/citadel_heroes_russian.txt": "109693fe8a957fc461dbd9013a602314f6edcb31a0445c9e9e29a01b6bfdecd6"
-  }
+  },
+  "verified_stock_build_id": "26097978"
 }

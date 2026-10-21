@@ -1,6 +1,14 @@
 import argparse,hashlib,json,re,struct,zlib
 from pathlib import Path
 
+SELECTION_RESOURCES = ("scripts/abilities.vdata_c", "models/heroes_wip/yamato/clips/ui_hero_select.vnmclip_c")
+RELOAD_RESOURCES = tuple(f"models/heroes_wip/yamato/clips/{name}.vnmclip_c" for name in (
+    "reload_idle", "reload_idle_quick", "reload_run_quick", "reload_in_air_quick",
+    "reload_slide_quick", "reload_crouch_idle_quick", "reload_crouch_run_quick")) + (
+    "models/heroes_wip/yamato/yamato.vnmskel_c",
+    "animgraphs/animgraph2/hero/yamato/yamato_sword_bodygroup.vnmgraph_c",
+    "models/heroes_staging/yamato_v2/yamato.vmdl_c")
+
 def sha(path):
     h = hashlib.sha256()
     with Path(path).open("rb") as stream:
@@ -10,7 +18,7 @@ def sha(path):
 
 def check_native_abilities(game, manifest, resource="scripts/abilities.vdata_c"):
     """Read the stock VPK directly; addon search paths cannot shadow this check."""
-    if resource not in {"scripts/abilities.vdata_c", "models/heroes_wip/yamato/clips/ui_hero_select.vnmclip_c"}:
+    if resource not in SELECTION_RESOURCES + RELOAD_RESOURCES:
         raise RuntimeError("Unexpected native resource")
     expected = manifest.get("compatibility_checks", {}).get(resource, {}).get("sha256")
     if expected is None:
@@ -74,8 +82,12 @@ def check_native_abilities(game, manifest, resource="scripts/abilities.vdata_c")
     return {"resource": resource, "sha256": actual, "status": "matches reference; runtime not tested"}
 
 def check_selection_base(game, manifest):
-    report = [check_native_abilities(game, manifest, resource) for resource in (
-        "scripts/abilities.vdata_c", "models/heroes_wip/yamato/clips/ui_hero_select.vnmclip_c")]
+    resources = SELECTION_RESOURCES
+    if manifest.get('version') == 'v1.0':
+        resources += RELOAD_RESOURCES
+        if set(manifest.get('compatibility_checks', {})) != set(resources):
+            raise RuntimeError('Expected all twelve v1 native archive references')
+    report = [check_native_abilities(game, manifest, resource) for resource in resources]
     expected_paths = {f"resource/localization/{group}/{group}_{language}.txt"
         for group in ("citadel_heroes", "citadel_gc_hero_names") for language in ("english", "russian")}
     checks = manifest.get("native_localization_checks", {})
