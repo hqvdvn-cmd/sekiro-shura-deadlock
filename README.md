@@ -6,6 +6,8 @@ Wolf in the Shura outfit replaces Yamato. Includes Kusabimaru, the red Mortal Bl
 
 [Download v1.0](https://github.com/hqvdvn-cmd/sekiro-shura-deadlock/releases/tag/v1.0)
 
+[GameBanana: downloads and one-click install](https://gamebanana.com/mods/730456)
+
 This release keeps reload A, selected after in-game comparison. The normal, low-health and killstreak portraits now share a painted style. **The Japanese voice pack still needs work:** some synthetic lines sound choppy. A voice update is planned.
 
 ## Install with a mod manager
