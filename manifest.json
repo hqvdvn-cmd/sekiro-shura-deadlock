@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "version": "v29-beta",
+  "variant": "standalone",
+  "platform": "Windows",
+  "packages": [
+    {
+      "file": "pak13_dir.vpk",
+      "component": "Wolf model, animations, selection UI, HUD and prototype voices",
+      "bytes": 336355736,
+      "sha256": "4635677432bfea9f9e4fa4795d6dd7a9eec7630ade57cbd4b97a898a490bce9e"
+    },
+    {
+      "file": "pak14_dir.vpk",
+      "component": "Yamato-specific effects",
+      "bytes": 829953,
+      "sha256": "da01037f27b11d0e851783e81064b4ba1a3acd02a05022e9b6c275e3a0e32272"
+    },
+    {
+      "file": "pak16_dir.vpk",
+      "component": "Ultimate appearance binding",
+      "bytes": 944045,
+      "sha256": "7441ec630b290b377c79731896a31c62a81c0de272bbb1565df74209d24fe02b"
+    }
+  ],
+  "source_steam_build_id": "26091806",
+  "compatibility_checks": {
+    "scripts/abilities.vdata_c": {
+      "sha256": "bdb27bcc6ae29471ec942a3f23c84d14a913021896bb5bc3c5bf21f8031c8f8c",
+      "matched_stock_build_ids": [
+        "26090082",
+        "26091806"
+      ]
+    },
+    "models/heroes_wip/yamato/clips/ui_hero_select.vnmclip_c": {
+      "sha256": "3fd4163ddd3d7211d740387bcc9a80bb60dea5025e9dae2e871aac1bd1788bbb"
+    }
+  },
+  "runtime": "Work in progress, published at owner request. V27 combat/reload/ultimate previously checked by owner; V29 hand/back-sword changes have compiled checks and are installed, new in-game acceptance remains pending.",
+  "known_limitations": [
+    "Work in progress. Sword grip, selection pose and sheathing may still need adjustment.",
+    "A brief native blue parry startup flash may remain. Shared parry and movement colors are unchanged.",
+    "Japanese synthetic prototype voices can sound choppy; voice-quality replacement is deferred.",
+    "English/Russian names and tags replace localization files and can conflict with other renaming mods.",
+    "Other Yamato replacements and ability binding packages can conflict; standalone has no separate clean-game match acceptance."
+  ],
+  "native_localization_checks": {
+    "resource/localization/citadel_gc_hero_names/citadel_gc_hero_names_english.txt": "daa5aa4808bf2ecbc299b4f1e6b459fc6d1ee6d47886bad8054812388f0fcf5c",
+    "resource/localization/citadel_heroes/citadel_heroes_english.txt": "d75e9cb0cb3c9761acc22da03615ddd272177107ef4c3bc9e05de2bb63da921b",
+    "resource/localization/citadel_gc_hero_names/citadel_gc_hero_names_russian.txt": "d53200a3c4a140f88f15680acba265890662777f626c8a6ebb7da1e2cc7a160f",
+    "resource/localization/citadel_heroes/citadel_heroes_russian.txt": "109693fe8a957fc461dbd9013a602314f6edcb31a0445c9e9e29a01b6bfdecd6"
+  }
+}
